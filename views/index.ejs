@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh; 
+            padding: 0 20px;
+        }
+        
+        .loading {
+            display: none;
+            margin-top: 20px;
+            font-size: 18px;
+            color: green;
+        }
+
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 10px; 
+            width: 100%; 
+            margin: 0 auto; 
+            max-width: 1200px; 
+        }
+
+        button {
+            width: 100%;
+            padding: 20px;
+            display: flex; 
+            flex-direction: column;
+            align-items: center; 
+            justify-content: center;
+            border: none;
+            border-radius: 5px;
+            background-color: #FFFFFF;
+            color: black;
+            border: 2px solid black;
+            transition: background-color 0.3s, transform 0.2s; 
+        }
+        button img {
+            width: 30px;
+            margin-bottom: 5px;
+        }
+        button:hover {
+            background-color: #FFFFFF;
+            border: 2px solid #ccc;
+        }
+        button:active {
+            transform: scale(0.95);
+        }
+        .loading {
+            display: none;
+            margin-top: 20px;
+            font-size: 18px;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <h1>Import Your Data from Existing Platforms</h1>
+    <div class="button-grid"> 
+        <button onclick="window.location.href='/auth/asana';">
+            <img src="https://www.vhv.rs/dpng/d/80-803173_asana-hd-png-download.png" alt="Asana Icon"> <strong style="font-size: 1.2em;">Asana</strong>
+            <p>Import tasks and projects from Asana.</p>
+        </button>
+        <button onclick="window.location.href='/auth/linear';">
+            <img src="https://seeklogo.com/images/L/linear-icon-logo-EC07930519-seeklogo.com.png" alt="Linear Icon"> <strong style="font-size: 1.2em;">Linear</strong>
+            <p>Transfer your Linear issues and projects.</p>
+        </button>
+        <button onclick="window.location.href='/auth/trello';">
+            <img src="https://avatars.slack-edge.com/2021-07-19/2282472048054_9a51d280179d828b3ad7_512.png" alt="Trello Icon"> <strong style="font-size: 1.2em;">Trello</strong>
+            <p>Import boards and cards from Trello.</p>
+        </button>
+        <button onclick="window.location.href='/auth/notion';">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/45/Notion_app_logo.png" alt="Notion Icon"> <strong style="font-size: 1.2em;">Notion</strong>
+            <p>Bring your Notion pages and databases.</p>
+        </button>
+        <button onclick="window.location.href='/auth/basecamp';">
+            <img src="https://cdn.icon-icons.com/icons2/2429/PNG/512/basecamp_logo_icon_147315.png" alt="Basecamp Icon"> <strong style="font-size: 1.2em;">Basecamp</strong>
+            <p>Import projects and tasks from Basecamp.</p>
+        </button>
+        <button onclick="window.location.href='/auth/jira';">
+            <img src="https://cdn-icons-png.flaticon.com/512/5968/5968894.png" alt="Jira Icon"> <strong style="font-size: 1.2em;">Jira</strong>
+            <p>Transfer issues and projects from Jira.</p>
+        </button>
+        <button onclick="window.location.href='/auth/discord';">
+            <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/discord-round-black-icon.png" alt="Discord Icon"> <strong style="font-size: 1.2em;">Discord</strong>
+            <p>Import channels and messages from Discord.</p>
+        </button>
+        <button onclick="window.location.href='/auth/slack';">
+            <img src="https://static-00.iconduck.com/assets.00/slack-icon-512x511-udpsz3x6.png" alt="Discord Icon"> <strong style="font-size: 1.2em;">Slack</strong>
+            <p>Bring your Slack channels and messages.</p>
+        </button>
+    </div> 
+    </body>
+</html>

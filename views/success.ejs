@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #ffffff;
+            color: #333;
+        }
+        .success-container {
+            text-align: center;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(205, 123, 123, 0.1);
+            animation: fadeIn 0.5s ease-out;
+        }
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #e74c3c;
+        }
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        .continue-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            background: linear-gradient(45deg, #ffffff, #f0f0f0);
+            color: black;
+            border: 2px solid black;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            width: 100%;
+        }
+        .continue-button:hover {
+            background-color: #FFFFFF; /* Darker shade on hover */
+            border: 2px solid #ccc;
+            transform: scale(1.05);
+        }
+        .continue-button:active {
+            transform: scale(0.95);
+        }
+        .continue-button:active {
+            transform: scale(0.95);
+        }
+        .success-icon {
+            height: 20rem;
+            width: 20rem;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+            20%, 40%, 60%, 80% { transform: translateX(5px); }
+        }
+        .shake {
+            animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+        }
+    </style>
+</head>
+<body>
+    <div class="success-container">
+        <img src="https://png.pngtree.com/png-clipart/20190921/original/pngtree-cartoon-recruiting-success-person-illustration-png-image_4763094.jpg" alt="Success Icon" class="success-icon">
+        <h1 class="pulse">Success!</h1>
+        <p><%= message %></p>
+        <button class="continue-button" onclick="window.location.href='/'">Continue</button>
+    </div>
+
+    <script>
+        // Add pulse animation to the success message periodically
+        setInterval(() => {
+            document.querySelector('h1').classList.add('shake');
+            setTimeout(() => {
+                document.querySelector('h1').classList.remove('shake');
+            }, 820);
+        }, 5000);
+    </script>
+</body>
+</html>

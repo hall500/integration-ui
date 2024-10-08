@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Callback Handler</title>
+</head>
+<body>
+    <h1 style="font-family: Arial, sans-serif; text-align: center; margin: 50px;">Processing Callback...</h1>
+    <div id="message" style="font-family: Arial, sans-serif; text-align: center; margin: 20px; font-size: 18px; color: green;"></div>
+
+    <script>
+        const token = '<%= token %>';
+        const workstationId = '<%= workstationId %>';
+        const urlParams = new URLSearchParams(window.location.search);
+        const hashParams = new URLSearchParams(window.location.hash.substring(1));
+        const provider = window.location.pathname.split('/').pop();
+        const params = `${urlParams.toString()}${urlParams.toString() && hashParams.toString() ? '&' : ''}${hashParams.toString()}`; // Combine search and hash params
+
+        fetch(`http://localhost:8888/v1/integrations/${provider}?${params}`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'x-workstation-id': workstationId
+            }
+        })
+        .then(response => {
+            if (!response.ok) throw new Error('Network response was not ok');
+            return response.json();
+        })
+        .then(data => {
+            document.getElementById('message').innerText = 'Connect successfully! Starting to process...';
+            return fetch(`http://localhost:8888/v1/imports/oauth?provider=${provider}`, {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'x-workstation-id': workstationId
+                }
+            });
+        })
+        .then(response => {
+            if (!response.ok) throw new Error('Network response was not ok');
+            return response.json();
+        })
+        .then(data => {
+            console.log('Processing complete:', data);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            document.getElementById('message').innerText = 'An error occurred during processing.';
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #ffffff;
+            color: #333;
+        }
+        .error-container {
+            text-align: center;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(205, 123, 123, 0.1);
+            animation: fadeIn 0.5s ease-out;
+        }
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #e74c3c;
+        }
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        .back-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            background: linear-gradient(45deg, #ffffff, #f0f0f0);
+            color: black;
+            border: 2px solid black;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            width: 100%;
+        }
+        .back-button:hover {
+            background-color: #FFFFFF; /* Darker shade on hover */
+            border: 2px solid #ccc;
+            transform: scale(1.05);
+        }
+        .back-button:active {
+            transform: scale(0.95);
+        }
+        .back-button:active {
+            transform: scale(0.95);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+            20%, 40%, 60%, 80% { transform: translateX(5px); }
+        }
+        .shake {
+            animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+        }
+        
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            p {
+                font-size: 1rem;
+            }
+            .back-button {
+                font-size: 14px;
+                padding: 8px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcST3dAKSv-Sco3sSBLeijS_mJ19WnZSDm9gsg&s" alt="Construction Worker" class="construction-worker">
+        <h1 class="shake">Oops!</h1>
+        <p><%= message %></p>
+        <button class="back-button" onclick="window.history.back()">Go Back</button>
+    </div>
+
+    <script>
+        setInterval(() => {
+            document.querySelector('h1').classList.add('shake');
+            setTimeout(() => {
+                document.querySelector('h1').classList.remove('shake');
+            }, 820);
+        }, 5000);
+    </script>
+</body>
+</html>
